@@ -22,14 +22,14 @@ type Block(statements : Statement list, pos : Position) =
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-type DeclarationStatement(declarationType : Type, name : string, body : Initializer, pos : Position) =
+type DeclarationStatement(declarationType : Type, name : ID, body : Initializer, pos : Position) =
     inherit Statement(pos)
     member x.Type = declarationType
     member x.Name = name
     member x.Body = body
     //add variable to the context
 
-    override x.ToString() = sprintf "%A %s = %A;\n" declarationType name body
+    override x.ToString() = sprintf "%A %A = %A;\n" declarationType name body
 
     override x.Interpret() = () // do this
 
@@ -101,7 +101,7 @@ type ForStatement(init : DeclarationStatement, condition : Expression,
     member x.Update    = update
     member x.Body      = body
 
-    override x.ToString() = sprintf "for (%A %s = %A; %A; %s = %A) %A" init.Type init.Name init.Body 
+    override x.ToString() = sprintf "for (%A %A = %A; %A; %s = %A) %A" init.Type init.Name init.Body 
                                     condition (String.concat "." update.Path) update.Body body
 
     //interpret init, while condition is true interpret body and interpret update

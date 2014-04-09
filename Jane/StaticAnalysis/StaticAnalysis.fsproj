@@ -5,12 +5,12 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>566ae778-7f64-4c67-bf0e-361e5209f003</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>TestTree</RootNamespace>
-    <AssemblyName>TestTree</AssemblyName>
+    <ProjectGuid>e206246e-9751-4590-abb2-d721e556fbb4</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>StaticAnalysis</RootNamespace>
+    <AssemblyName>StaticAnalysis</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <Name>TestTree</Name>
+    <Name>StaticAnalysis</Name>
     <TargetFSharpCoreVersion>4.3.0.0</TargetFSharpCoreVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -21,9 +21,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <WarningLevel>3</WarningLevel>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DocumentationFile>bin\Debug\TestTree.XML</DocumentationFile>
-    <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>bin\Debug\StaticAnalysis.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,9 +30,7 @@
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <WarningLevel>3</WarningLevel>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DocumentationFile>bin\Release\TestTree.XML</DocumentationFile>
-    <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>bin\Release\StaticAnalysis.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FSharp.Core, Version=$(TargetFSharpCoreVersion), Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -46,17 +42,13 @@
     <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestTree.fs" />
+    <Compile Include="Errors.fs" />
+    <Compile Include="StaticAnalysis.fs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AST\AST.fsproj">
       <Name>AST</Name>
       <Project>{02daa5a7-9d06-4441-8b7e-e4d9baf1acfe}</Project>
-      <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\StaticAnalysis\StaticAnalysis.fsproj">
-      <Name>StaticAnalysis</Name>
-      <Project>{e206246e-9751-4590-abb2-d721e556fbb4}</Project>
       <Private>True</Private>
     </ProjectReference>
   </ItemGroup>

@@ -7,6 +7,15 @@ type Expression(pos : Position) =
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+type InstanceOf(expression : Expression, controlType : Type, pos : Position) =
+    inherit Expression(pos)
+    member x.Expression  = expression
+    member x.ControlType = controlType
+
+    override x.ToString() = sprintf "(%A instanceOf %A)" expression controlType
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 type BinaryOperation(firstOperand : Expression, operator : BinaryOperator, secondOperand : Expression, pos : Position) =
     inherit Expression(pos)
     member x.FirstOperand  = firstOperand

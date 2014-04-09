@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JaneIDE", "JaneIDE\JaneIDE.
 		{02DAA5A7-9D06-4441-8B7E-E4D9BAF1ACFE} = {02DAA5A7-9D06-4441-8B7E-E4D9BAF1ACFE}
 	EndProjectSection
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "StaticAnalysis", "StaticAnalysis\StaticAnalysis.fsproj", "{E206246E-9751-4590-ABB2-D721E556FBB4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{4355E129-3F0D-4A6C-BD09-12D8D7B5ADC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4355E129-3F0D-4A6C-BD09-12D8D7B5ADC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4355E129-3F0D-4A6C-BD09-12D8D7B5ADC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E206246E-9751-4590-ABB2-D721E556FBB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E206246E-9751-4590-ABB2-D721E556FBB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E206246E-9751-4590-ABB2-D721E556FBB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E206246E-9751-4590-ABB2-D721E556FBB4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

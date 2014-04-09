@@ -3,13 +3,13 @@
 open System
 
 [<AbstractClass>]
-type ProgramMember(name : string, pos : Position) =
+type ProgramMember(name : ID, pos : Position) =
     inherit Node(pos)
     member x.Name = name 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-type Interface(name : string, ancestors : string list, members : InterfaceMember list, pos : Position) =
+type Interface(name : ID, ancestors : ID list, members : InterfaceMember list, pos : Position) =
     inherit ProgramMember(name, pos)
     
     let fields        = List.fold (fun acc (m : InterfaceMember) ->
@@ -41,13 +41,13 @@ type Interface(name : string, ancestors : string list, members : InterfaceMember
 
     override x.ToString() =
         let extendsStr   = if not ancestors.IsEmpty then " extends " else ""
-        let ancestorsStr = String.concat ", " ancestors
+        let ancestorsStr = ancestors |> List.map string |> String.concat ", "
         let membersStr   = members |> List.map string |> String.concat "\n\n"
-        sprintf "interface %s%s%s {\n\n%s\n\n}\n" name extendsStr ancestorsStr membersStr
+        sprintf "interface %A%s%s {\n\n%s\n\n}\n" name extendsStr ancestorsStr membersStr
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-type Class(name : string, ancestor : string option, interfaces : string list, 
+type Class(name : ID, ancestor : ID option, interfaces : ID list, 
            classConstructor : ClassConstructor option, members : ClassMember list, pos : Position) =
     inherit ProgramMember(name, pos)
     
@@ -86,8 +86,8 @@ type Class(name : string, ancestor : string option, interfaces : string list,
     member x.Constructor   = classConstructor
 
     override x.ToString() =
-        let extendsStr    = if ancestor.IsSome then sprintf " extends %s" ancestor.Value else ""
+        let extendsStr    = if ancestor.IsSome then sprintf " extends %A" ancestor.Value else ""
         let implementsStr = if not interfaces.IsEmpty then " implements " else ""
-        let interfacesStr = String.concat ", " interfaces
-        let membersStr   = members |> List.map string |> String.concat "\n"
-        sprintf "class %s%s%s%s {\n\n%A\n%s\n}\n" name extendsStr implementsStr interfacesStr classConstructor membersStr
+        let interfacesStr = interfaces |> List.map string |>  String.concat ", "
+        let membersStr    = members |> List.map string |> String.concat "\n"
+        sprintf "class %A%s%s%s {\n\n%A\n%s\n}\n" name extendsStr implementsStr interfacesStr classConstructor membersStr
